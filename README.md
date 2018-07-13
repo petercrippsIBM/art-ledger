@@ -104,15 +104,15 @@ $ bx cf start art-ledger
 ```
 This takes some time but once you get the message the app is started if you go to the IBM Cloud dashboard you should see the REST server running like this.
 
-![rest server](https://github.ibm.com/pete-cripps/art-ledger/blob/master/images/REST%20Server.png "rest server")
+![rest server](https://github.com/petercrippsIBM/art-ledger/blob/master/images/REST%20Server.png "rest server")
 
 If you go to that application and click on **Visit App URL** you'll launch the REST server and see a screen like this:
 
-![running rest server](https://github.ibm.com/pete-cripps/art-ledger/blob/master/images/Running%20REST%20Server.png "running rest server")
+![running rest server](https://github.com/petercrippsIBM/art-ledger/blob/master/images/Running%20REST%20Server.png "running rest server")
 
 You can now interact with the REST server by adding assets and participants and running transactions. If you switch to IBM Blockchain Starter Plan monitor and check the Channels link you should see the number of blocks increasing as you execute transactions.
 
-![blockchain network](https://github.ibm.com/pete-cripps/art-ledger/blob/master/images/Blockchain%20Network.png "blockchain network")
+![blockchain network](https://github.com/petercrippsIBM/art-ledger/blob/master/images/Blockchain%20Network.png "blockchain network")
 
 ## Step 10: Generate and run an Angular application for interacting with your business network
 The REST server created on IBM Cloud in the previous step can also be used by applications. You can build a basic Angular application using the **yo** command. First make sure you have both the generator as well as Yeoman installed:
@@ -154,7 +154,7 @@ $ npm start
 ```
 This will compile the application. Once you see `webpack: Compiled successfully` you can point your browser at `http://localhost:4200` and interact with you application through a similar screen to this one:
 
-![art-ledger application](https://github.ibm.com/pete-cripps/art-ledger/blob/master/images/Application.png "art-ledger application")
+![art-ledger application](https://github.com/petercrippsIBM/art-ledger/blob/master/images/Application.png "art-ledger application")
 
 That's it! You should now have a blockchain network with chaincode deployed to it as well as a REST server that exposes the APIs to control network participants, assets and transactions. You should also have an application, running locally, that can consume the APIs to also control your network.
 
@@ -183,7 +183,7 @@ Cannot find business card.
 This is either caused because you have not created all the cards you should have (i.e. you missed a step out) or because you have not set the environment variable `NODE_CONFIG`.
 
 To see what cards you have issue the command `composer card list`. You should see something like this:
-![composer card list](https://github.ibm.com/pete-cripps/art-ledger/blob/master/images/Card%20List.png "composer card list")
+![composer card list](https://github.com/petercrippsIBM/art-ledger/blob/master/images/Card%20List.png "composer card list")
 
 Check `NODE_CONFIG` is set by issuing a `printenv NODE_CONFIG` command and if not export the NODE_CONFIG environment variable using this instruction:
 ```
