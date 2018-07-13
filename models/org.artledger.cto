@@ -1,0 +1,36 @@
+/**
+ * art-ledger, an art trading network.
+ */
+namespace org.artledger
+
+asset ArtWork identified by artId {
+    o String artId
+    o ArtWorkType artWorkType
+    o String description
+    o Double currentValue
+    --> Artist artist
+    --> Owner owner
+}
+participant Artist identified by artistId {
+    o String artistId
+    o String firstName
+    o String lastName
+}
+participant Owner identified by ownerId {
+    o String ownerId
+    o String firstName
+    o String lastName
+    o Boolean isDealer
+}
+enum ArtWorkType {
+  o PAINTING
+  o SCULPTURE
+  o PHOTOGRAPH
+  o INSTALLATION
+  o CERAMIC
+  o OTHER
+}
+transaction SellArtWork {
+  --> ArtWork artWork
+  --> Owner newOwner
+}
