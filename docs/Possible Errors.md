@@ -12,7 +12,7 @@ Cannot find business card.
 This is either caused because you have not created all the cards you should have (i.e. you missed a step out) or because you have not set the environment variable `NODE_CONFIG`.
 
 To see what cards you have issue the command `composer card list`. You should see something like this:
-![composer card list](images/Card%20List.png "composer card list")
+![composer card list](../images/Card%20List.png "composer card list")
 
 Check `NODE_CONFIG` is set by issuing a `printenv NODE_CONFIG` command and if not export the NODE_CONFIG environment variable using this instruction:
 ```
