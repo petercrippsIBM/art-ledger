@@ -6,7 +6,11 @@ These instructions take you through every step of building your very first block
 
 For this exercise we'll be building a blockchain network called **Art-Ledger**, an application for artists and art lovers to buy, sell and track works of art. All of the files will be kept on GitHub and can be cloned or downloaded from: https://github.com/petercrippsIBM/art-ledger
 
-This file **README.md** is written using Markdown which you can get a cheatsheet for [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+If you want to follow through the complete development of **Art-Ledger** from v0.0.1 you'll need to take the archived versions stored in the subdirectory **archive** and copy them into **lib** (in the case of the .js file) or **models** (in the case of the .cto file). **Step 1** starts assuming v0.0.1 of these logic and model files.
+
+This file (**README.md**) is written using Markdown which you can get a cheatsheet for [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+
+Unless you are very careful in following these instructions you will almost certainly get one or more errors ad you step through them. You can find a list of errors I have encountered (with fixes) in [Possible Errors](docs/Possible%20Errors.md).
 
 ## Step 1: Install prerequisites
 As we'll be building this project locally and trying it out there first we need to install a number of tools to do this. The best place to get instructions for how to do setup (and tear down) of an environment is from [here](https://hyperledger.github.io/composer/latest/installing/installing-index). This gives instructions for both Ubuntu and macOS. What follows here mostly assumes you are using macOS because that's the machine I use. Note that for macOS you need to download Xcode (for the C++ compiler, used to install native Node.js modules) from the [AppStore](https://itunes.apple.com/bm/app/xcode/id497799835?mt=12) if you don't have it. This is a BIG application and for me tool several hours to download so you may want to kick that off and then go to bed or for a long walk.
@@ -45,7 +49,7 @@ Business Network Definitions are composed of:
 
 The model files define the business domain for a business network, while the JavaScript files contain transaction processor functions. The transaction processor functions run on a Hyperledger Fabric and have access to the asset registries that are stored in the world state of the Hyperledger Fabric blockchain. The Access Control file contains a set of access control rules that define the rights of the different participants in the business network. More information on this as well as descriptions of the modelling and ACL language can be found [here](https://ibm-blockchain.github.io/develop/business-network/businessnetworkdefinition).
 
-You should use the web playground to define and test your network before deploying it onto IBM Blockchain. You can either define your own or use the **art-ledger** network defined in this project. The rest of these instructions assume you are using **art-ledger** so if you have defined your own network you will need to change the names to those you have used. If you are defining your own model and logic files you should do so in playground then paste your model file into **models/org.artledger.cto** (or whatever you have called your project) and logic into **lib/logic.js**.
+You should use the web playground to define and test your network before deploying it onto IBM Blockchain. You can either define your own or use the **art-ledger** network defined in this project. The rest of these instructions assume you are using **art-ledger** so if you have defined your own network you will need to change the names to those you have used. If you are defining your own model and logic files you should do so in playground then paste your model file into **models/org.artledger.cto** (or whatever you have called your project) and logic into **lib/logic.js**. Note that for **art-ledger** you can get the initial versions of both of these files from the subdirectory **archive**.
 
 ## Step 6: Download the Connection Profile
 A **Connection Profile** is used by Hyperledger Composer and other client programmes to connect to a runtime. You can find a full description of Connection Profiles in the Hyperledger Composer documentation [here](https://hyperledger.github.io/composer/latest/reference/connectionprofile). Note that Connection Profiles have changed between different versions of Composer so you need to ensure you are using a format compatible with the version of Composer you are using. If you just stick with the latest versions you should be okay.
@@ -102,15 +106,15 @@ $ bx cf start art-ledger
 ```
 This takes some time but once you get the message the app is started if you go to the IBM Cloud dashboard you should see the REST server running like this.
 
-![rest server](https://github.com/petercrippsIBM/art-ledger/blob/master/images/REST%20Server.png "rest server")
+![rest server](images/REST%20Server.png "rest server")
 
 If you go to that application and click on **Visit App URL** you'll launch the REST server and see a screen like this:
 
-![running rest server](https://github.com/petercrippsIBM/art-ledger/blob/master/images/Running%20REST%20Server.png "running rest server")
+![running rest server](images/Running%20REST%20Server.png "running rest server")
 
 You can now interact with the REST server by adding assets and participants and running transactions. If you switch to IBM Blockchain Starter Plan monitor and check the Channels link you should see the number of blocks increasing as you execute transactions.
 
-![blockchain network](https://github.com/petercrippsIBM/art-ledger/blob/master/images/Blockchain%20Network.png "blockchain network")
+![blockchain network](images/Blockchain%20Network.png "blockchain network")
 
 ## Step 10: Generate and run an Angular application for interacting with your business network
 The REST server created on IBM Cloud in the previous step can also be used by applications. You can build a basic Angular application using the **yo** command. First make sure you have both the generator as well as Yeoman installed:
@@ -152,9 +156,17 @@ $ npm start
 ```
 This will compile the application. Once you see `webpack: Compiled successfully` you can point your browser at `http://localhost:4200` and interact with you application through a similar screen to this one:
 
-![art-ledger application](https://github.com/petercrippsIBM/art-ledger/blob/master/images/Application.png "art-ledger application")
+![art-ledger application](images/Application.png "art-ledger application")
 
 That's it! You should now have a blockchain network with chaincode deployed to it as well as a REST server that exposes the APIs to control network participants, assets and transactions. You should also have an application, running locally, that can consume the APIs to also control your network.
+
+## Step 11: Upgrading the business networks
+
+```
+$ composer network upgrade -n art-ledger -V 0.0.2 -c admin@art-ledger
+```
+bx cf push art-ledger --docker-image ibmblockchain/composer-rest-server:0.19.5 -c "composer-rest-server -c admin@carauction-network -n never -w true" -i 1 -m 256M --no-start --no-manifest
+
 
 ## Other getting started guides
 There are numerous guides and videos for getting started with Hyperledger some of which were used in writing these instructions. They are listed here for reference:
@@ -166,39 +178,4 @@ There are numerous guides and videos for getting started with Hyperledger some o
 [How to Create an Application on Blockchain Using Hyperledger](https://medium.freecodecamp.org/ultimate-end-to-end-tutorial-to-create-an-application-on-blockchain-using-hyperledger-3a83a80cbc71) on Medium freeCodeCamp() by Niharika Singh.
 
 [Developing a Blockchain Application with Starter Plan](https://developer.ibm.com/tv/blockchain-innovators/#bigc) on developerWorks TV by various people.
-
-## Possible errors
-Unless you are very careful in following these instructions you are bound to get errors first time through. Here are some of the ones I encountered with fixes.
-
-### *Error*
-Errors when building the .bna file.
-### *Fix*
-First time through the .bna file failed to build because I still had the **permissions.acl** file created when I used **yo** to build a skeleton directory structure. If you get that problem then paste the contents of [this file](https://github.com/petercrippsIBM/art-ledger/blob/master/archive/permissions-v0.0.1.acl) **permissions.acl** into the one in the project directory.
-
-### *Error*
-Cannot find business card.
-### *Fix*
-This is either caused because you have not created all the cards you should have (i.e. you missed a step out) or because you have not set the environment variable `NODE_CONFIG`.
-
-To see what cards you have issue the command `composer card list`. You should see something like this:
-![composer card list](https://github.com/petercrippsIBM/art-ledger/blob/master/images/Card%20List.png "composer card list")
-
-Check `NODE_CONFIG` is set by issuing a `printenv NODE_CONFIG` command and if not export the NODE_CONFIG environment variable using this instruction:
-```
-$ export NODE_CONFIG=$(cat cardstore-cloudant.json)
-```
-
-### *Error*
-```
-Failed to load connector module "composer-connector-hlfv1" for connection type "hlfv1". Failed to load gRPC binary module because it was not installed for the current system
-Expected directory: node-v57-darwin-x64-unknown
-Found: [node-v48-darwin-x64-unknown]
-```
-This problem can often be fixed by running "npm rebuild" on the current system
-
-### *Fix*
-To rebuild first go to the directory containing the tool to be rebuilt (**generator-hyperledger-composer** in this case) then issue the rebuild command.
-```
-$ cd /usr/local/lib/node_modules/generator-hyperledger-composer`
-$ npm rebuild --unsafe-prem
 ```
