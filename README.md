@@ -13,9 +13,19 @@ This file (**README.md**) is written using Markdown which you can get a cheatshe
 Unless you are very careful in following these instructions you will almost certainly get one or more errors ad you step through them. You can find a list of errors I have encountered (with fixes) in [Possible Errors](docs/Possible%20Errors.md).
 
 ## Step 1: Install prerequisites
-As we'll be building this project locally and trying it out there first we need to install a number of tools to do this. The best place to get instructions for how to do setup (and tear down) of an environment is from [here](https://hyperledger.github.io/composer/latest/installing/installing-index). This gives instructions for both Ubuntu and macOS. What follows here mostly assumes you are using macOS because that's the machine I use. Note that for macOS you need to download Xcode (for the C++ compiler, used to install native Node.js modules) from the [AppStore](https://itunes.apple.com/bm/app/xcode/id497799835?mt=12) if you don't have it. This is a BIG application and for me tool several hours to download so you may want to kick that off and then go to bed or for a long walk.
+As we'll be building this project locally and trying it out there first we need to install a number of tools to do this. The best place to get instructions for how to do setup (and tear down) of an environment is from [here](https://hyperledger.github.io/composer/latest/installing/installing-index). This gives instructions for both Ubuntu and macOS.
+
+What follows here mostly assumes you are using macOS because that's the machine I use. Note that for macOS you need to download Xcode (for the C++ compiler, used to install native Node.js modules) from the [AppStore](https://itunes.apple.com/bm/app/xcode/id497799835?mt=12) if you don't have it. This is a BIG application and for me tool several hours to download so you may want to kick that off and then go to bed or for a long walk.
 
 **Important Note** You can get a number of problems if you don't load compatible versions of these tools. In particular take note of the fact you need to install the LTS (long term support) version of Node using the command: `nvm use --lts`. If you don't do this you can get problems later on when trying to use tools such as **yo**. See the section on possible errors for more information.
+
+**Another Important Note** When installing the Hyperledger Composer tools (i.e. `composer-cli`, `composer-rest-server` and `generator-hyperledger-composer`) it is important to make sure they are all at the same version. Rather than risking it specify the version when you are installing. For example:
+
+```
+$ npm install -g composer-cli@0.19.5
+```
+
+**Version 0.19.5 of the Hyperledger Composer tools are currently the versions that work with Hyperledger Fabric 1.1.**
 
 You will also need an editor to create new files. I use Atom which you can get [here](https://atom.io). You can also get a plugin for Atom for working with Composer which will give you syntax highlighting that you can get [here](https://github.com/hyperledger/composer-atom-plugin). Another good editor is VScode which you can get [here](https://code.visualstudio.com/download).
 
@@ -49,7 +59,7 @@ Business Network Definitions are composed of:
 
 The model files define the business domain for a business network, while the JavaScript files contain transaction processor functions. The transaction processor functions run on a Hyperledger Fabric and have access to the asset registries that are stored in the world state of the Hyperledger Fabric blockchain. The Access Control file contains a set of access control rules that define the rights of the different participants in the business network. More information on this as well as descriptions of the modelling and ACL language can be found [here](https://ibm-blockchain.github.io/develop/business-network/businessnetworkdefinition).
 
-You should use the web playground to define and test your network before deploying it onto IBM Blockchain. You can either define your own or use the **art-ledger** network defined in this project. The rest of these instructions assume you are using **art-ledger** so if you have defined your own network you will need to change the names to those you have used. If you are defining your own model and logic files you should do so in playground then paste your model file into **models/org.artledger.cto** (or whatever you have called your project) and logic into **lib/logic.js**. Note that for **art-ledger** you can get the initial versions of both of these files from the subdirectory **archive**.
+You should use the web playground to define and test your network before deploying it onto IBM Blockchain. You can either define your own network or use the **art-ledger** network defined in this project. The rest of these instructions assume you are using **art-ledger** so if you have defined your own network you will need to change the names to those you have used. If you are defining your own model and logic files you should do so in playground then paste your model file into **models/org.artledger.cto** (or whatever you have called your project) and logic into **lib/logic.js**. Note that for **art-ledger** you can get the initial versions of both of these files from the subdirectory **archive**.
 
 ## Step 6: Download the Connection Profile
 A **Connection Profile** is used by Hyperledger Composer and other client programmes to connect to a runtime. You can find a full description of Connection Profiles in the Hyperledger Composer documentation [here](https://hyperledger.github.io/composer/latest/reference/connectionprofile). Note that Connection Profiles have changed between different versions of Composer so you need to ensure you are using a format compatible with the version of Composer you are using. If you just stick with the latest versions you should be okay.
@@ -128,12 +138,6 @@ $ yo hyperledger-composer:angular
 ```
 You will be prompted with a series of questions which you should answer as follows (substituting your information as needed):
 ```
-? 'Allo Pete! What would you like to do? Hyperledger Composer
-Make sure you are in the directory you want to scaffold into.
-This generator can also be run with: yo hyperledger-composer
-Welcome to the Hyperledger Composer project generator
-? Please select the type of project: Angular
-You can run this generator using: 'yo hyperledger-composer:angular'
 Welcome to the Hyperledger Composer Angular project generator
 ? Do you want to connect to a running Business Network? Yes
 ? Project name: art-ledger-app

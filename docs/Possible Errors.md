@@ -1,4 +1,4 @@
-## Possible errors
+## Possible Errors
 Unless you are very careful in following these instructions you are bound to get errors first time through. Here are some of the ones I encountered with fixes.
 
 ### *Error*

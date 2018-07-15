@@ -1,2 +1,5 @@
 art-ledger-app/
 credentials/
+connection-profile.json
+cardstore-cloudant.json
+*.card
