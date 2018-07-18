@@ -10,7 +10,7 @@ If you want to follow through the complete development of **Art-Ledger** from v0
 
 This file (**README.md**) is written using Markdown which you can get a cheatsheet for [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
-Unless you are very careful in following these instructions you will almost certainly get one or more errors ad you step through them. You can find a list of errors I have encountered (with fixes) in [Possible Errors](docs/Possible%20Errors.md).
+You may get errors at various points as you step through these instructions. You can find a list of errors I have encountered (with fixes) in [Possible Errors](docs/Possible%20Errors.md).
 
 ## Step 1: Install prerequisites
 As we'll be building this project locally and trying it out there first we need to install a number of tools to do this. The best place to get instructions for how to do setup (and tear down) of an environment is from [here](https://hyperledger.github.io/composer/latest/installing/installing-index). This gives instructions for both Ubuntu and macOS.
@@ -25,7 +25,7 @@ What follows here mostly assumes you are using macOS because that's the machine 
 $ npm install -g composer-cli@0.19.5
 ```
 
-**Version 0.19.5 of the Hyperledger Composer tools are currently the versions that work with Hyperledger Fabric 1.1.**
+**Version 0.19.x of the Hyperledger Composer tools are currently the versions that work with Hyperledger Fabric 1.1.**
 
 You will also need an editor to create new files. I use Atom which you can get [here](https://atom.io). You can also get a plugin for Atom for working with Composer which will give you syntax highlighting that you can get [here](https://github.com/hyperledger/composer-atom-plugin). Another good editor is VScode which you can get [here](https://code.visualstudio.com/download).
 
@@ -93,6 +93,12 @@ Remember to substitute the name of your network at the appropriate points when e
 
 Before creating the business network archive (.bna) file you'll need to tweak the **permissions.acl** file. The ones you get by default probably won't be compatible with changes you'll have added in the model file. If you get that problem then paste the contents of [this file](https://github.com/petercrippsIBM/art-ledger/blob/master/archive/permissions-v0.0.1.acl) **permissions.acl** into the one in the project directory.
 
+At this point you can check the network is up and running by issuing a ping command:
+```
+composer network ping -c admin@art-ledger
+```
+This will return some information about the network including the version number of the network composer runtime.
+
 ## Step 9: Expose REST APIs in the cloud for the business network
 Once you have a deployed business network you need a way to interact with it. There is a REST server provided as part of the tooling that can be deployed onto IBM Cloud that generates and exposes a set of REST APIs allowing you to interact with your network. This needs to be uploaded as a Cloud Foundry application to IBM Cloud. To do this you need the IBM CLoud CLI to be installed. If you've not done that already you can down load from [here](https://console.bluemix.net/docs/cli/reference/bluemix_cli/get_started.html).
 
@@ -100,13 +106,19 @@ Once the IBM Cloud CLI is downloaded and installed you should have a set of **bx
 ```
 $ bx login -a https://api.ng.bluemix.net --sso
 ```
-You need to specify the region you are working with if its different from the above (which is US South). Next push the REST server to IBM Cloud:
+You need to specify the region you are working with if its different from the above (which is US South). Then use:
+```
+$ bx target --cf
+```
+to target the right Cloud Foundry org/space. When prompted select the space you are using. Next push the REST server to IBM Cloud:
 ```
 $ bx cf push art-ledger --docker-image ibmblockchain/composer-rest-server:0.19.5 \
   -c "composer-rest-server -c admin@art-ledger -n never -w true" \
   -i 1 -m 256M --no-start --no-manifest
 ```
-Make sure you provide the name of your choosing for the REST server (here it's **art-ledger**) and also the correct admin card name (i.e. **admin@art-ledger**). Then set the environment variable for NODE_CONFIG on IBM Cloud (again using a suitable replacement for **art-ledger**):
+Make sure you provide the name of your choosing for the REST server (here it's **art-ledger**) and also the correct admin card name (i.e. **admin@art-ledger**). Also it's worth specifying the version of the 'composer-rest-server' you want loaded to ensure it's compatible with the version of `composer`.
+
+Next set the environment variable for NODE_CONFIG on IBM Cloud (again using a suitable replacement for **art-ledger**):
 ```
 $ bx cf set-env art-ledger NODE_CONFIG "${NODE_CONFIG}"
 ```
