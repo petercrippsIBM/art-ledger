@@ -1,0 +1,8 @@
+---
+applications:
+- name: art-ledger
+  memory: 256M
+  instances: 1
+docker:
+  image: ibmblockchain/composer-rest-server:0.19.5
+command: composer-rest-server -c admin@art-ledger -n never -w true

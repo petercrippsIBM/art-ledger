@@ -13,7 +13,7 @@ This file (**README.md**) is written using Markdown which you can get a cheatshe
 You may get errors at various points as you step through these instructions. You can find a list of errors I have encountered (with fixes) in [Possible Errors](docs/Possible%20Errors.md).
 
 ## Step 1: Install prerequisites
-As we'll be building this project locally and trying it out there first we need to install a number of tools to do this. The best place to get instructions for how to do setup (and tear down) of an environment is from [here](https://hyperledger.github.io/composer/latest/installing/installing-index). This gives instructions for both Ubuntu and macOS.
+As we'll be building this project locally and trying it out there first we need to install a number of tools to do this. The best place to get instructions for how to do setup of an environment is from [here](https://console.bluemix.net/docs/services/blockchain/develop_install.html#installing-a-development-environment). To install the prerequisites follow the instructions [here](https://hyperledger.github.io/composer/latest/installing/installing-prereqs.html). These give information for both Ubuntu and macOS. If you need to uninstall an environment that you previously set up follow the instructions [here](https://hyperledger.github.io/composer/latest/installing/uninstall-dev-env).
 
 What follows here mostly assumes you are using macOS because that's the machine I use. Note that for macOS you need to download Xcode (for the C++ compiler, used to install native Node.js modules) from the [AppStore](https://itunes.apple.com/bm/app/xcode/id497799835?mt=12) if you don't have it. This is a BIG application and for me tool several hours to download so you may want to kick that off and then go to bed or for a long walk.
 
@@ -25,7 +25,7 @@ What follows here mostly assumes you are using macOS because that's the machine 
 $ npm install -g composer-cli@0.19.5
 ```
 
-**Version 0.19.x of the Hyperledger Composer tools are currently the versions that work with Hyperledger Fabric 1.1.**
+**Version 0.19.5 of the Hyperledger Composer tools are the latest versions that work with Hyperledger Fabric 1.1, currently used on IBM Blockchain Starter Plan.**
 
 You will also need an editor to create new files. I use Atom which you can get [here](https://atom.io). You can also get a plugin for Atom for working with Composer which will give you syntax highlighting that you can get [here](https://github.com/hyperledger/composer-atom-plugin). Another good editor is VScode which you can get [here](https://code.visualstudio.com/download).
 
@@ -71,7 +71,11 @@ We will be exposing the REST APIs for the business network from IBM Cloud so we 
 
 Set up a new Cloudant NoSQL Database instance with a database by following **Step 4** of [these instructions](https://www.ibm.com/developerworks/cloud/library/cl-deploy-blockchain-starter-plan-network/).
 
-One important point to emphasise is to export the `NODE_CONFIG` environment variable using this instruction:
+Make sure you have installed the `composer-wallet-cloudant` node module as follows:
+```
+$ npm install -g @ampretia/composer-wallet-cloudant
+```
+An important point to emphasise is to export the `NODE_CONFIG` environment variable using this instruction:
 ```
 $ export NODE_CONFIG=$(cat cardstore-cloudant.json)
 ```
@@ -89,15 +93,40 @@ To create certificates and Business Network Cards for your network follow these 
 
 from [these instructions.](https://www.ibm.com/developerworks/cloud/library/cl-deploy-blockchain-starter-plan-network/)
 
-Remember to substitute the name of your network at the appropriate points when executing the commands in these steps.
+Remember to substitute the name of your network at the appropriate points when executing the commands in these steps. Specifically:
+
+**Step 5**
+```
+$ composer card create -f ca.card -p connection-profile.json -u admin -s <your-enrollSecret>
+```
+
+**Step 8**
+```
+$ composer network install -c adminCard -a art-ledger-0.0.1.bna
+$ composer network start -c adminCard -n art-ledger -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+```
+
+**Step 9**
+```
+$ composer card create -n art-ledger -p ./connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+$ composer card import -f admin@art-ledger.card
+```
 
 Before creating the business network archive (.bna) file you'll need to tweak the **permissions.acl** file. The ones you get by default probably won't be compatible with changes you'll have added in the model file. If you get that problem then paste the contents of [this file](https://github.com/petercrippsIBM/art-ledger/blob/master/archive/permissions-v0.0.1.acl) **permissions.acl** into the one in the project directory.
 
+If you check the block height of your channel you should see it set at '4' meaning there are four blocks in your network corresponding to:
+* 0 - the GENESIS block
+* 1 - addition of the certificate
+* 2 - instantiation of the chaincode
+* 4 - invocation of the chaincode
+
 At this point you can check the network is up and running by issuing a ping command:
 ```
-composer network ping -c admin@art-ledger
+$ composer network ping -c admin@art-ledger
 ```
-This will return some information about the network including the version number of the network composer runtime.
+This will return some information about the network including the version number of the network composer runtime (o.19.5 if you've been using the same version numbers in these instructions) and your network (0.0.1).
+
+You can also check your `composer-wallets` Cloudant database where you should see the three cards that have been created.
 
 ## Step 9: Expose REST APIs in the cloud for the business network
 Once you have a deployed business network you need a way to interact with it. There is a REST server provided as part of the tooling that can be deployed onto IBM Cloud that generates and exposes a set of REST APIs allowing you to interact with your network. This needs to be uploaded as a Cloud Foundry application to IBM Cloud. To do this you need the IBM CLoud CLI to be installed. If you've not done that already you can down load from [here](https://console.bluemix.net/docs/cli/reference/bluemix_cli/get_started.html).
@@ -106,7 +135,7 @@ Once the IBM Cloud CLI is downloaded and installed you should have a set of **bx
 ```
 $ bx login -a https://api.ng.bluemix.net --sso
 ```
-You need to specify the region you are working with if its different from the above (which is US South). Then use:
+Note that if you omit the `-sso` parameter you will need to login with your IBM Cloud email and password. 2You need to specify the region you are working with if its different from the above (which is US South). Then use:
 ```
 $ bx target --cf
 ```
