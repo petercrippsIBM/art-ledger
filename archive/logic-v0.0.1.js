@@ -15,7 +15,7 @@
 'use strict';
 
 /** v0.0.1
- *  Initial version of art-net logic.
+ *  Initial version of art-ledger logic.
  */
 
 /**

@@ -205,7 +205,27 @@ This will compile the application. Once you see `webpack: Compiled successfully`
 
 That's it! You should now have a blockchain network with chaincode deployed to it as well as a REST server that exposes the APIs to control network participants, assets and transactions. You should also have an application, running locally, that can consume the APIs to also control your network.
 
-## Step 11: Upgrading the business networks
+## Step 11: Upgrading the business network
+Once you have a basic business network up and running you can start to play around with it and add new chaincode. It's best to test this out using Composer Playground and then upgrade on IBM Cloud once you are ready. By way of example I've created a v0.0.2 of **art-ledger** which adds some very basic auction functionality. The updated chaincode can be found [here](archive/logic-v0.0.2.js) and model file [here](archive/org.artledger-v0.0.2.cto). To upgrade to this version follow these steps.
+
+If you are performing this upgrade following a break and have restarted your **Terminal** session remember to set `NODE_CONFIG` again with this command:
+```
+$ export NODE_CONFIG=$(cat cardstore-cloudant.json)
+```
+
+### Step 11.1: Copy the new code
+Copy the v0.0.2 chaincode from the archive file into **lib/logic.js** and the v0.0.2 model into **models/org.artledger.cto**.
+
+In the file **package.json** in the project root directory change the version number to be 0.0.2.
+
+### Step 11.2: Regenerate the BNA file
+To be able to install and start the updated business network, you need to regenerate the Business Network Archive (.bna) file by zipping up the necessary artifacts again. From the project root directory issue the following command:
+```
+$ composer archive create -t dir -n .
+```
+This will result in the creation of a new version of **art-ledger**, `art-ledger@0.0.0.2.bna`. The new version number is obtained from the **package.json** file you updated in the previous step. Since the Starter Plan instance does not accept files with @ in the name, rename it to `art-ledger-0.0.0.2.bna`.
+
+### Step 11.3: Upgrade the network
 
 ```
 $ composer network upgrade -n art-ledger -V 0.0.2 -c admin@art-ledger
