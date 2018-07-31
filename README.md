@@ -226,12 +226,38 @@ $ composer archive create -t dir -n .
 This will result in the creation of a new version of **art-ledger**, `art-ledger@0.0.0.2.bna`. The new version number is obtained from the **package.json** file you updated in the previous step. Since the Starter Plan instance does not accept files with @ in the name, rename it to `art-ledger-0.0.0.2.bna`.
 
 ### Step 11.3: Upgrade the network
+First we need to install a new version of the Hyperledger Composer business network to our blockchain. Issue the command:
+```
+$ composer network install -c adminCard -a art-ledger-0.0.2.bna
+```
 
+Next upgrade the Hyperledger Composer business network to the new version
 ```
 $ composer network upgrade -n art-ledger -V 0.0.2 -c admin@art-ledger
 ```
-bx cf push art-ledger --docker-image ibmblockchain/composer-rest-server:0.19.5 -c "composer-rest-server -c admin@carauction-network -n never -w true" -i 1 -m 256M --no-start --no-manifest
 
+This will take a few minutes. When you see a success message you can check this has worked by pinging the network:
+```
+$ composer network ping -c admin@art-ledger
+```
+you should see the new version has been installed. Finally you can go to the Blockchain Starter Plan monitor on IBM Cloud and check the default channel. There should be a new block showing the recent activity if new chaincode being installed.
+
+### Step 11.4: Re-install the REST server
+You'll now need to re-install the REST server to pick up the new APIs. To do this first stop the server either by going to the IBM Cloud dashboard, finding the REST server app and selection `Stop` or login to your IBM Cloud account (see **Step 9**) and issue a stop from the command line:
+```
+$ bx cf stop art-ledger
+```
+You can then re-install the REST server and start it again using:
+```
+$ bx cf push art-ledger --docker-image ibmblockchain/composer-rest-server:0.19.5 \
+  -c "composer-rest-server -c admin@art-ledger -n never -w true" \
+  -i 1 -m 256M --no-start --no-manifest
+$ bx cf start art-ledger
+```
+If you go to the IBM Cloud dashboard and select the URL of the REST server you should see it running with the additional APIs.
+
+### Step 11.4: Generate and run an Angular application for interacting with your business network
+This is a straight forward re-run of **Step 10**  
 
 ## Other getting started guides
 There are numerous guides and videos for getting started with Hyperledger some of which were used in writing these instructions. They are listed here for reference:
