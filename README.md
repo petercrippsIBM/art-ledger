@@ -167,6 +167,8 @@ You can now interact with the REST server by adding assets and participants and 
 
 ![blockchain network](images/Blockchain%20Network.png "blockchain network")
 
+**Step 12** has some examples on how to test out the **Art-Ledger** network using the REST APIs.
+
 ## Step 10: Generate and run an Angular application for interacting with your business network
 The REST server created on IBM Cloud in the previous step can also be used by applications. You can build a basic Angular application using the **yo** command. First make sure you have both the generator as well as Yeoman installed:
 ```
@@ -258,6 +260,56 @@ If you go to the IBM Cloud dashboard and select the URL of the REST server you s
 
 ### Step 11.4: Generate and run an Angular application for interacting with your business network
 This is a straight forward re-run of **Step 10**  
+
+## Step 12: Testing out the Art-Ledger network
+Open a web page and enter the URL of the API REST server for your network e.g. `https://art-ledger.mybluemix.net/explorer/`. You will see a number of HTTP methods for each of the assets, participants and transactions you have deployed onto your blockchain network. Test them out by using the following examples.
+
+Create owners using the `POST/Owner` method with the following example data:
+```
+{
+    "$class": "org.artledger.Owner",
+    "ownerId": "OWNER01",
+    "firstName": "Tim",
+    "lastName": "Trotter",
+    "isDealer": true
+}
+```
+
+Create artists using the `POST/Artist` method with the following example data:
+```
+{
+    "$class": "org.artledger.Artist",
+    "artistId": "ARTIST01",
+    "firstName": "Jenny",
+    "lastName": "Jones"
+}
+```
+
+Create art works using the `POST/ArtWork` method with the following example data:
+```
+{
+    "$class": "org.artledger.ArtWork",
+    "artId": "ART01",
+    "type": "PAINTING",
+    "description": "Landscape in Oils",
+    "currentValue": 1000,
+    "underAuction": false,
+    "artist": "resource:org.artledger.Artist#ARTIST01",
+    "owner": "resource:org.artledger.Owner#OWNER01"
+  }
+```
+
+Run a transaction using the `POST/SellArtWork` method with the following example data:
+```
+{
+  "$class": "org.artledger.SellArtWork",
+  "newValue": 1500,
+  "artWork": "resource:org.artledger.ArtWork#ART01",
+  "newOwner": "resource:org.artledger.Owner#OWNER02"
+}
+```
+
+Once you have run some transactions check the **defaultChannel** on your blockchain network and look at the blocks that have been created.
 
 ## Other getting started guides
 There are numerous guides and videos for getting started with Hyperledger some of which were used in writing these instructions. They are listed here for reference:
