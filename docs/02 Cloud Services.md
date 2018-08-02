@@ -1,11 +1,19 @@
 # Step 2: Create IBM Cloud Services
-You'll need an IBM Cloud account for this which you can get [here](https://console.bluemix.net/registration/). Once you are signed in you need to create a new blockchain instance. For details on how to do this follow **Step 2** [here](https://www.ibm.com/developerworks/cloud/library/cl-deploy-blockchain-starter-plan-network/). Note that once you have created the network you may want to change the name which you can do from your IBM Cloud dashboard. Click on the three dots to the right of the blockchain service and select **rename**.
+You'll need an IBM Cloud account for this which you can get [here](https://console.bluemix.net/registration/).
+
+Once you have an account and are signed in you need to create a new blockchain instance. From the IBM Cloud dasboard select `Create resource` (button at the top right). Type 'blockchain' in the search window and press enter. The IBM Blockchain service appears twice, select either one and this window will appear.
+
+![blockchain01](../images/Blockchain01.png "blockchain01")
+
+Give your network a name (I'm using 'Blockchain-Art-Ledger') and press `Create`. After a few seconds this screen will appear.
+
+![blockchain02](../images/Blockchain02.png "blockchain02")
 
 Once your blockchain service is up and running you can go to the monitor and browse what you have. The Starter Plan gives you two company/organisations, each with a single peer and CA and one ordering service. There is a default channel shared by the peers. If you look at the default channel you will see it has a block height of 3 corresponding to the three transactions that have taken place to create the network.
 
 More information on Hyperledger Fabric can be found in the [Hyperledger Fabric ](http://hyperledger-fabric.readthedocs.io/en/latest/index.html) documentation.
 
-A **Connection Profile** is used by Hyperledger Composer and other client programmes to connect to a runtime. You can find a full description of Connection Profiles in the Hyperledger Composer documentation [here](https://hyperledger.github.io/composer/latest/reference/connectionprofile). Note that Connection Profiles have changed between different versions of Composer so you need to ensure you are using a format compatible with the version of Composer you are using. If you just stick with the latest versions you should be okay.
+A *Connection Profile* is used by Hyperledger Composer and other client programmes to connect to a runtime. You can find a full description of Connection Profiles in the Hyperledger Composer documentation [here](https://hyperledger.github.io/composer/latest/reference/connectionprofile). Note that Connection Profiles have changed between different versions of Composer so you need to ensure you are using a format compatible with the version of Composer you are using. If you just stick with the latest versions you should be okay.
 
 You can download the Connection Profile for the blockchain network you have created by following **Step 3** of [these instructions](https://www.ibm.com/developerworks/cloud/library/cl-deploy-blockchain-starter-plan-network/). Make sure you download the Connection Profile, rename it to **connection-profile.json** and place it in the root directory of your project. In a later step you will need to get the **enrollSecret** from the Connection Profile file.
 
