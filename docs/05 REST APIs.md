@@ -15,7 +15,12 @@ $ ibmcloud cf push art-ledger --docker-image ibmblockchain/composer-rest-server:
   -c "composer-rest-server -c admin@art-ledger -n never -w true" \
   -i 1 -m 256M --no-start --no-manifest
 ```
-Make sure you provide the name of your choosing for the REST server (here it's **art-ledger**) and also the correct admin card name (i.e. **admin@art-ledger**). Also it's worth specifying the version of the 'composer-rest-server' you want loaded to ensure it's compatible with the version of `composer`.
+Make sure you provide the name of your choosing for the REST server (here it's **art-ledger** but you should choose something unique, possibly by prepending your name otherwise you will clash with this version if you are in the same region/space) and also the correct admin card name (i.e. **admin@art-ledger**). Also it's worth specifying the version of the 'composer-rest-server' you want loaded to ensure it's compatible with the version of `composer`.
+
+The `ibmcloud` CLI can use a YAML manifest file for the instructions to push to IBM Cloud. An example manifest can be found [here](../maifest.yaml). If you have this file in your project root directory then you can just issue the command:
+```
+$ ibmcloud cf push
+```
 
 Next set the environment variable for NODE_CONFIG on IBM Cloud (again using a suitable replacement for **art-ledger**):
 ```

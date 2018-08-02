@@ -23,7 +23,34 @@ We're going to first set up the directory structure locally that you will build 
 
 We can use [`Yeoman`](http://yeoman.io/) to create the recommended directory structure for business networks. You should have Yeoman installed already if you followed the instructions for setting up your development environment but if not can get it [here](http://yeoman.io/). Instructions for using Yeoman to build the right directory structure as well as a description of what all the parts are can be found in the IBM Cloud documentation [here](https://ibm-blockchain.github.io/develop/business-network/bnd-create).
 
-Now that you have a skeletal directory structure created with **yo** (albeit with no real content yet) you can add it to GitHub so you can share it and keep it under source control. You first need to initialise the project directory created in **Step 2** as being a Git repository following [these instructions](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository).
+To create a project directory change to the directory you want to add your project files to and run this command:
+```
+$ yo hyperledger-composer:businessnetwork
+```
+You will be prompted with a series of questions about your business network which I answered as follows resulting in the files shown being created:
+```
+Welcome to the business network generator
+? Business network name: art-ledger
+? Description: Art Ledger Network
+? Author name:  P Cripps
+? Author email: pete_cripps@uk.ibm.com
+? License: Apache-2.0
+? Namespace: org.artledger
+? Do you want to generate an empty template network? No: generate a populated sample network
+   create package.json
+   create README.md
+   create models/org.artledger.cto
+   create permissions.acl
+   create .eslintrc.yml
+   create features/sample.feature
+   create features/support/index.js
+   create test/logic.js
+   create lib/logic.js
+```
+
+This creates a new directory called (in my case) `art-ledger`. From now on this will be referred to as the *project root directory* in these instructions.
+
+Now that you have a skeletal directory structure created with `yo` (albeit with no real content yet) you can add it to GitHub so you can share it and keep it under source control. You first need to initialise the project directory as being a Git repository following [these instructions](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository).
 
 You can now push your project to GitHub using the Git CLI as described [here](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
 

@@ -1,5 +1,5 @@
-# Building Your First Hyperledger Network
-These instructions take you through five steps (plus two optional ones) to building your very first blockchain network with [Hyperledger Fabric](https://www.hyperledger.org) on [IBM Cloud](https://console.bluemix.net). The instructions assume no, or at least very little, knowledge not only of Hyperledger but also the tools you will use along the way such as [Git](https://git-scm.com), and [NPM](https://www.npmjs.com). Where there is background information you need to know these instructions will link to that.
+# Building Your First Hyperledger Network on IBM Cloud
+These instructions take you through five steps (plus two optional ones) to building your very first blockchain network with [Hyperledger Fabric](https://www.hyperledger.org) on [IBM Cloud](https://console.bluemix.net) using the [IBM Blockchain Platform Starter Plan](https://www.ibm.com/blogs/blockchain/2018/06/by-developers-for-developers-the-ibm-blockchain-platform-starter-plan/). The instructions assume no, or at least very little, knowledge not only of Hyperledger but also the tools you will use along the way such as [Git](https://git-scm.com), and [NPM](https://www.npmjs.com). Where there is background information you need to know these instructions will link to that.
 
 For this exercise we'll be building a blockchain network called **Art-Ledger**, an application for artists and art lovers to buy, sell and track works of art. All of the files will be kept on GitHub and can be cloned or downloaded from https://github.com/petercrippsIBM/art-ledger
 
