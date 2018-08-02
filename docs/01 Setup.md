@@ -25,4 +25,4 @@ Now that you have a skeletal directory structure created with **yo** (albeit wit
 
 You can now push your project to GitHub using the Git CLI as described [here](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
 
-Now go to [Step 2: Create IBM Cloud Services](docs/02%20Cloud%20Services.md).
+Now go to [Step 2: Create IBM Cloud Services](../docs/02%20Cloud%20Services.md).
