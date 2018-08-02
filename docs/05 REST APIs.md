@@ -1,17 +1,17 @@
 # Step 5: Expose and Test REST APIs
 Once you have a deployed business network you need a way to interact with it. There is a REST server provided as part of the tooling that can be deployed onto IBM Cloud that generates and exposes a set of REST APIs allowing you to interact with your network. This needs to be uploaded as a Cloud Foundry application to IBM Cloud. To do this you need the IBM CLoud CLI to be installed. If you've not done that already you can down load from [here](https://console.bluemix.net/docs/cli/reference/bluemix_cli/get_started.html).
 
-Once the IBM Cloud CLI is downloaded and installed you should have a set of **bx** commands at your disposal. First, log into IBM Cloud using your credentials. Issue the command:
+Once the IBM Cloud CLI is downloaded and installed you should have a set of **ibmcloud** commands at your disposal. First, log into IBM Cloud using your credentials. Issue the command:
 ```
-$ bx login -a https://api.ng.bluemix.net --sso
+$ ibmcloud login -a https://api.ng.bluemix.net --sso
 ```
 Note that if you omit the `-sso` parameter you will need to login with your IBM Cloud email and password. 2You need to specify the region you are working with if its different from the above (which is US South). Then use:
 ```
-$ bx target --cf
+$ ibmcloud target --cf
 ```
 to target the right Cloud Foundry org/space. When prompted select the space you are using. Next push the REST server to IBM Cloud:
 ```
-$ bx cf push art-ledger --docker-image ibmblockchain/composer-rest-server:0.19.5 \
+$ ibmcloud cf push art-ledger --docker-image ibmblockchain/composer-rest-server:0.19.5 \
   -c "composer-rest-server -c admin@art-ledger -n never -w true" \
   -i 1 -m 256M --no-start --no-manifest
 ```
@@ -19,11 +19,11 @@ Make sure you provide the name of your choosing for the REST server (here it's *
 
 Next set the environment variable for NODE_CONFIG on IBM Cloud (again using a suitable replacement for **art-ledger**):
 ```
-$ bx cf set-env art-ledger NODE_CONFIG "${NODE_CONFIG}"
+$ ibmcloud cf set-env art-ledger NODE_CONFIG "${NODE_CONFIG}"
 ```
 Then start the REST server (**art-ledger** is whatever yours is called):
 ```
-$ bx cf start art-ledger
+$ ibmcloud cf start art-ledger
 ```
 This takes some time but once you get the message the app is started if you go to the IBM Cloud dashboard you should see the REST server running like this.
 

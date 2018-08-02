@@ -3,7 +3,7 @@ As we'll be building this project locally and trying it out there first we need 
 
 What follows here mostly assumes you are using macOS because that's the machine I use. Note that for macOS you need to download Xcode (for the C++ compiler, used to install native Node.js modules) from the [AppStore](https://itunes.apple.com/bm/app/xcode/id497799835?mt=12) if you don't have it. This is a BIG application and for me tool several hours to download so you may want to kick that off and then go to bed or for a long walk.
 
-**Important Note** You can get a number of problems if you don't load compatible versions of these tools. In particular take note of the fact you need to install the LTS (long term support) version of Node using the command: `nvm use --lts`. If you don't do this you can get problems later on when trying to use tools such as **yo**. See the section on [possible errors](docs/Possible%20Errors.md) for more information.
+**Important Note** You can get a number of problems if you don't load compatible versions of these tools. In particular take note of the fact you need to install the LTS (long term support) version of Node using the command: `nvm use --lts`. If you don't do this you can get problems later on when trying to use tools such as **yo**. See the section on [possible errors](../docs/Possible%20Errors.md) for more information.
 
 **Another Important Note** When installing the Hyperledger Composer tools (i.e. `composer-cli`, `composer-rest-server` and `generator-hyperledger-composer`) it is important to make sure they are all at the same version. Rather than risking it specify the version when you are installing. For example:
 
@@ -15,7 +15,7 @@ $ npm install -g composer-cli@0.19.5
 
 You will also need an editor to create new files. I use Atom which you can get [here](https://atom.io). You can also get a plugin for Atom for working with Composer which will give you syntax highlighting that you can get [here](https://github.com/hyperledger/composer-atom-plugin). Another good editor is VScode which you can get [here](https://code.visualstudio.com/download).
 
-Finally when working with IBM Cloud you need to install the command line tools for interacting with it. You can get these from [Getting started with IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/get_started.html).
+Finally when working with IBM Cloud you need to install the command line tools for interacting with it. You can get these from [Getting started with IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/get_started.html). Note that the command line name has recently changed from `bx` to `ibmcloud`. These instructions will use the new name but the previous one should work in the same way.
 
 We're going to first set up the directory structure locally that you will build your Hyperledger business network project files in. Once you have generated those files you can push them into GitHub where they can be put under source control and shared.
 

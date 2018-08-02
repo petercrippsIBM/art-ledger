@@ -38,14 +38,14 @@ you should see the new version has been installed. Finally you can go to the Blo
 ### Step 7.4: Re-install the REST Server
 You'll now need to re-install the REST server to pick up the new APIs. To do this first stop the server either by going to the IBM Cloud dashboard, finding the REST server app and selection `Stop` or login to your IBM Cloud account (see **Step 9**) and issue a stop from the command line:
 ```
-$ bx cf stop art-ledger
+$ ibmcloud cf stop art-ledger
 ```
 You can then re-install the REST server and start it again using:
 ```
-$ bx cf push art-ledger --docker-image ibmblockchain/composer-rest-server:0.19.5 \
+$ ibmcloud cf push art-ledger --docker-image ibmblockchain/composer-rest-server:0.19.5 \
   -c "composer-rest-server -c admin@art-ledger -n never -w true" \
   -i 1 -m 256M --no-start --no-manifest
-$ bx cf start art-ledger
+$ ibmcloud cf start art-ledger
 ```
 If you go to the IBM Cloud dashboard and select the URL of the REST server you should see it running with the additional APIs.
 
