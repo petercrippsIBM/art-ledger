@@ -27,15 +27,15 @@ $ bx cf start art-ledger
 ```
 This takes some time but once you get the message the app is started if you go to the IBM Cloud dashboard you should see the REST server running like this.
 
-![rest server](images/REST%20Server.png "rest server")
+![rest server](../images/REST%20Server.png "rest server")
 
 If you go to that application and click on **Visit App URL** you'll launch the REST server and see a screen like this:
 
-![running rest server](images/Running%20REST%20Server.png "running rest server")
+![running rest server](../images/Running%20REST%20Server.png "running rest server")
 
 You can now interact with the REST server by adding assets and participants and running transactions. If you switch to IBM Blockchain Starter Plan monitor and check the Channels link you should see the number of blocks increasing as you execute transactions.
 
-![blockchain network](images/Blockchain%20Network.png "blockchain network")
+![blockchain network](../images/Blockchain%20Network.png "blockchain network")
 
 Open a web page and enter the URL of the API REST server for your network e.g. `https://art-ledger.mybluemix.net/explorer/`. You will see a number of HTTP methods for each of the assets, participants and transactions you have deployed onto your blockchain network. Test them out by using the following examples.
 
@@ -86,4 +86,4 @@ Run a transaction using the `POST/SellArtWork` method with the following example
 
 Once you have run some transactions check the **defaultChannel** on your blockchain network and look at the blocks that have been created.
 
-Now go to [Step 6 (Optional): Create an Angular Application](docs/06%20Angular%20App.md).
+Now go to [Step 6 (Optional): Create an Angular Application](../docs/06%20Angular%20App.md).

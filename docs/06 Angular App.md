@@ -32,8 +32,8 @@ $ npm start
 ```
 This will compile the application. Once you see `webpack: Compiled successfully` you can point your browser at `http://localhost:4200` and interact with you application through a similar screen to this one:
 
-![art-ledger application](images/Application.png "art-ledger application")
+![art-ledger application](../images/Application.png "art-ledger application")
 
 That's it! You should now have a blockchain network with chaincode deployed to it as well as a REST server that exposes the APIs to control network participants, assets and transactions. You should also have an application, running locally, that can consume the APIs to also control your network.
 
-Now go to [Step 7 (Optional): Update the Business Network](docs/07%20Update%20Business%20Network.md).
+Now go to [Step 7 (Optional): Update the Business Network](../docs/07%20Update%20Business%20Network.md).

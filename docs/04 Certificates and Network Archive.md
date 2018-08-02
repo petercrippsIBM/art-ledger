@@ -45,4 +45,4 @@ This will return some information about the network including the version number
 
 You can also check your `composer-wallets` Cloudant database where you should see the three cards that have been created.
 
-Now go to [Step 5: Expose and Test REST APIs](docs/05%20REST%20APIs.md).
+Now go to [Step 5: Expose and Test REST APIs](../docs/05%20REST%20APIs.md).

@@ -23,4 +23,4 @@ $ export NODE_CONFIG=$(cat cardstore-cloudant.json)
 ```
 From this point on, all the subsequent commands **must** be executed in the same Terminal window in which environment variable `NODE_CONFIG` was set to ensure that the cloud-based wallet is populated with the necessary cards. If you close or crash your Terminal window remember to re-run this command when you open a new Terminal.
 
-Now go to [Step 3: Define a Business Network](docs/03%20Business%20Network.md).
+Now go to [Step 3: Define a Business Network](../docs/03%20Business%20Network.md).
