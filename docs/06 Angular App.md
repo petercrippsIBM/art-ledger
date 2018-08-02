@@ -30,7 +30,7 @@ This will take a while to complete but once it does so you will have a new subdi
 ```
 $ npm start
 ```
-This will compile the application. Once you see `webpack: Compiled successfully` you can point your browser at `http://localhost:4200` and interact with you application through a similar screen to this one:
+This will compile the application. Once you see `webpack: Compiled successfully` you can point your browser at `http://localhost:4200` and interact with you application through a similar screen to this one.
 
 ![art-ledger application](../images/Application.png "art-ledger application")
 

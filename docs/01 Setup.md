@@ -1,7 +1,9 @@
 # Step 1: Setup a Development Environment
-As we'll be building this project locally and trying it out there first we need to install a number of tools to do this. The best place to get instructions for how to do setup of an environment is from [here](https://console.bluemix.net/docs/services/blockchain/develop_install.html#installing-a-development-environment). To install the prerequisites follow the instructions [here](https://hyperledger.github.io/composer/latest/installing/installing-prereqs.html). These give information for both Ubuntu and macOS. If you need to uninstall an environment that you previously set up follow the instructions [here](https://hyperledger.github.io/composer/latest/installing/uninstall-dev-env).
+We need a number of tools installed locally to develop our network. The best place to get instructions for how to do setup of an environment is from [here](https://console.bluemix.net/docs/services/blockchain/develop_install.html#installing-a-development-environment). To install the prerequisites follow the instructions [here](https://hyperledger.github.io/composer/latest/installing/installing-prereqs.html). These give information for both Ubuntu and macOS.
 
-What follows here mostly assumes you are using macOS because that's the machine I use. Note that for macOS you need to download Xcode (for the C++ compiler, used to install native Node.js modules) from the [AppStore](https://itunes.apple.com/bm/app/xcode/id497799835?mt=12) if you don't have it. This is a BIG application and for me tool several hours to download so you may want to kick that off and then go to bed or for a long walk.
+If you need to *uninstall* an environment that you previously set up follow the instructions [here](https://hyperledger.github.io/composer/latest/installing/uninstall-dev-env).
+
+What follows mostly assumes you are using macOS because that's the OS I use (currently v10.13.5). For macOS you also need to download Xcode (for the C++ compiler, used to install native Node.js modules) from the [AppStore](https://itunes.apple.com/bm/app/xcode/id497799835?mt=12) if you don't have it. This is a **BIG** application and for me took several hours to download so you may want to kick that off and then go to bed or for a long walk.
 
 **Important Note** You can get a number of problems if you don't load compatible versions of these tools. In particular take note of the fact you need to install the LTS (long term support) version of Node using the command: `nvm use --lts`. If you don't do this you can get problems later on when trying to use tools such as **yo**. See the section on [possible errors](../docs/Possible%20Errors.md) for more information.
 
@@ -24,5 +26,13 @@ We can use [Yeoman](http://yeoman.io/) to create the recommended directory struc
 Now that you have a skeletal directory structure created with **yo** (albeit with no real content yet) you can add it to GitHub so you can share it and keep it under source control. You first need to initialise the project directory created in **Step 2** as being a Git repository following [these instructions](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository).
 
 You can now push your project to GitHub using the Git CLI as described [here](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
+
+Once you have your development environment set up you can check all is as it should be by issuing the commend:
+```
+$ npm list -g --depth=0
+```
+which shows what packages you have installed. You should see something like this.
+
+![npm list](../images/NPM%20List.png "npm list")
 
 Now go to [Step 2: Create IBM Cloud Services](../docs/02%20Cloud%20Services.md).
