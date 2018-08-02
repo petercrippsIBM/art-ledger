@@ -15,13 +15,13 @@ $ npm install -g composer-cli@0.19.5
 
 **Version 0.19.5 of the Hyperledger Composer tools are the latest versions that work with Hyperledger Fabric 1.1, currently used on IBM Blockchain Starter Plan.**
 
-You will also need an editor to create new files. I use Atom which you can get [here](https://atom.io). You can also get a plugin for Atom for working with Composer which will give you syntax highlighting that you can get [here](https://github.com/hyperledger/composer-atom-plugin). Another good editor is VScode which you can get [here](https://code.visualstudio.com/download).
+You will also need an editor to create new files. I use `Atom` which you can get [here](https://atom.io). You can also get a plugin for `Atom` for working with `composer` which will give you syntax highlighting that you can get [here](https://github.com/hyperledger/composer-atom-plugin). Another good editor is `VScode` which you can get [here](https://code.visualstudio.com/download).
 
 Finally when working with IBM Cloud you need to install the command line tools for interacting with it. You can get these from [Getting started with IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/get_started.html). Note that the command line name has recently changed from `bx` to `ibmcloud`. These instructions will use the new name but the previous one should work in the same way.
 
 We're going to first set up the directory structure locally that you will build your Hyperledger business network project files in. Once you have generated those files you can push them into GitHub where they can be put under source control and shared.
 
-We can use [Yeoman](http://yeoman.io/) to create the recommended directory structure for business networks. You should have Yeoman installed already if you followed the instructions for setting up your development environment but if not can get it [here](http://yeoman.io/). Instructions for using Yeoman to build the right directory structure as well as a description of what all the parts are can be found in the IBM Cloud documentation [here](https://ibm-blockchain.github.io/develop/business-network/bnd-create).
+We can use [`Yeoman`](http://yeoman.io/) to create the recommended directory structure for business networks. You should have Yeoman installed already if you followed the instructions for setting up your development environment but if not can get it [here](http://yeoman.io/). Instructions for using Yeoman to build the right directory structure as well as a description of what all the parts are can be found in the IBM Cloud documentation [here](https://ibm-blockchain.github.io/develop/business-network/bnd-create).
 
 Now that you have a skeletal directory structure created with **yo** (albeit with no real content yet) you can add it to GitHub so you can share it and keep it under source control. You first need to initialise the project directory created in **Step 2** as being a Git repository following [these instructions](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository).
 
