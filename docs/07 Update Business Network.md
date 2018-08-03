@@ -11,14 +11,14 @@ Copy the v0.0.2 chaincode from the archive file into **lib/logic.js** and the v0
 
 In the file **package.json** in the project root directory change the version number to be 0.0.2.
 
-### Step 7.2: Regenerate the BNA File
+## Step 7.2: Regenerate the BNA File
 To be able to install and start the updated business network, you need to regenerate the Business Network Archive (.bna) file by zipping up the necessary artifacts again. From the project root directory issue the following command:
 ```
 $ composer archive create -t dir -n .
 ```
 This will result in the creation of a new version of **art-ledger**, `art-ledger@0.0.0.2.bna`. The new version number is obtained from the **package.json** file you updated in the previous step. Since the Starter Plan instance does not accept files with @ in the name, rename it to `art-ledger-0.0.0.2.bna`.
 
-### Step 7.3: Upgrade the Network
+## Step 7.3: Upgrade the Network
 First we need to install a new version of the Hyperledger Composer business network to our blockchain. Issue the command:
 ```
 $ composer network install -c adminCard -a art-ledger-0.0.2.bna
@@ -35,7 +35,7 @@ $ composer network ping -c admin@art-ledger
 ```
 you should see the new version has been installed. Finally you can go to the Blockchain Starter Plan monitor on IBM Cloud and check the default channel. There should be a new block showing the recent activity if new chaincode being installed.
 
-### Step 7.4: Re-install the REST Server
+## Step 7.4: Re-install the REST Server
 You'll now need to re-install the REST server to pick up the new APIs. To do this first stop the server either by going to the IBM Cloud dashboard, finding the REST server app and selection `Stop` or login to your IBM Cloud account (see **Step 9**) and issue a stop from the command line:
 ```
 $ ibmcloud cf stop art-ledger
@@ -49,5 +49,5 @@ $ ibmcloud cf start art-ledger
 ```
 If you go to the IBM Cloud dashboard and select the URL of the REST server you should see it running with the additional APIs.
 
-### Step 7.5: Re-Generate the Angular Application
+## Step 7.5: Re-Generate the Angular Application
 This is a straight forward re-run of [Step 6 (Optional): Create an Angular Application](../docs/06%20Angular%20App.md).  
