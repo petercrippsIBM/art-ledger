@@ -52,7 +52,7 @@ You then need to create a new credential for accessing the database service and 
 
 ![cloudant02](../images/Cloudant02.png "cloudant02")
 
-This will generate a new credential. Finally copy this to the JSON in the file created previously *immediately after the `"database": "composer-wallets" line`*. The file should now look like this (note these are not the real keys).
+This will generate a new credential. Finally copy this to the JSON in the file created previously *immediately after the `"database": "composer-wallets" line`*. The file should now look like this:
 ```
 {
   "composer": {

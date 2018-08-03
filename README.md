@@ -8,7 +8,7 @@ Okay, let's get started. Here are the five steps (plus some optional ones) to ge
 * [Step 1: Setup a Development Environment](docs/01%20Setup.md)
 * [Step 2: Create IBM Cloud Services](docs/02%20Cloud%20Services.md)
 * [Step 3: Define a Business Network](docs/03%20Business%20Network.md)
-* [Step 4: Create Certificates and Business Network Archive](docs/04%20Certificates%20and%20Network%20Archive.md)
+* [Step 4: Create Business Network Artefacts](docs/04%20Business%20Network%20Artefacts.md)
 * [Step 5: Expose and Test REST APIs](docs/05%20REST%20APIs.md)
 * [Step 6 (Optional): Create an Angular Application](docs/06%20Angular%20App.md)
 * [Step 7 (Optional): Update the Business Network](docs/07%20Update%20Business%20Network.md)
