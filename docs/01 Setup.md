@@ -17,7 +17,7 @@ $ npm install -g composer-cli@0.19.5
 
 You will also need an editor to create new files. I use `Atom` which you can get [here](https://atom.io). You can also get a plugin for `Atom` for working with `composer` which will give you syntax highlighting that you can get [here](https://github.com/hyperledger/composer-atom-plugin). Another good editor is `VScode` which you can get [here](https://code.visualstudio.com/download).
 
-Finally when working with IBM Cloud you need to install the command line tools for interacting with it. You can get these from [Getting started with IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/get_started.html). Note that the command line name has recently changed from `bx` to `ibmcloud`. These instructions will use the new name but the previous one should work in the same way.
+Finally when working with IBM Cloud you need to install the command line tools for interacting with it. You can get these from [Installing the stand-alone IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/ibmcloud/download_cli.html#install_use). Note that the command line name has recently changed from `bx` to `ibmcloud`. These instructions will use the new name but the previous one should work in the same way.
 
 We're going to first set up the directory structure locally that you will build your Hyperledger business network project files in. Once you have generated those files you can push them into GitHub where they can be put under source control and shared.
 
