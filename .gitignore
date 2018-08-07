@@ -1,4 +1,5 @@
 art-ledger-app/node_modules/
+art-ledger-app/package-lock.json
 credentials/
 connection-profile.json
 cardstore-cloudant.json
