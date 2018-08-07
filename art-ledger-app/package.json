@@ -1,0 +1,26 @@
+{
+  "name": "art-ledger-app",
+  "main": "server.js",
+  "description": "Art Ledger Front End App",
+  "version": "0.0.1",
+  "private": false,
+  "engines": {
+    "node": "6.*"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/petercrippsIBM/art-ledger"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.x",
+    "cfenv": "^1.0.x",
+    "cloudant": "1.9.x",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.x"
+  },
+  "author": "P Cripps",
+  "license": "Apache-2.0"
+}
