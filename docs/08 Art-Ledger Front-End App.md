@@ -26,7 +26,7 @@ When you point your browser at `http://localhost:3000` as instructed the followi
 
 ![art-ledger-app02](../images/Art-Ledger%20App02.png "art-ledger-app02")
 
-There are four pages each of which allow you to request information on the particpants and assets you have created or to create new ones. You can also execute transactions from here.
+There are a number of HTML pages each of which allow you to request information on the participants and assets you have created or to create new ones. You can also execute transactions from here (to be done still).
 
 Here is an example of the `Work with artists` page having selected the `Get Artists` button to see a list of artists already in the blockchain network.
 
