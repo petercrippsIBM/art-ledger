@@ -1,8 +1,6 @@
 # Step 8 (Optional): Art-Ledger Front-End Application
 To provide a simple way of creating and viewing Art-Ledger participants and assets as well as running transactions a simple HTML5 and JavaScript front-end is also provided. This will be compatible with the most current version of the art-ledger application.
 
-For now this front-end application runs locally but should be able to be run in IBM Cloud as well.
-
 The application uses the [Express Framework](https://expressjs.com).
 
 The following steps are the general procedure to set up and deploy the front-end application. See more detailed instructions in the [Getting started tutorial for Node.js](https://console.bluemix.net/docs/runtimes/nodejs/getting-started.html#getting-started-with-node-js-on-bluemix).
@@ -31,3 +29,17 @@ There are a number of HTML pages each of which allow you to request information 
 Here is an example of the `Work with artists` page having selected the `Get Artists` button to see a list of artists already in the blockchain network.
 
 ![art-ledger-app03](../images/Art-Ledger%20App03.png "art-ledger-app03")
+
+You can also deploy the application onto IBM Cloud by logging in:
+```
+$ ibmcloud login
+```
+Targetting a Cloud Foundry org and space:
+```
+$ ibmcloud target --cf
+```
+From the application directory (`art-ledger-app` in my case) push the app to IBM Cloud:
+```
+$ ibmcloud cf push
+```
+Deploying your application can take a few minutes. When deployment completes, you'll see a message that your app is running. You can run the application by going to the IBM Cloud dashboard, selecting it and clicking on`Vist App URL`.
