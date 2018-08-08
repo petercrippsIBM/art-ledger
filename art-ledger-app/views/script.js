@@ -160,6 +160,37 @@ function createAssetInfo(aType, cFunction) {
   xhttp.send(inputJSON);
 }
 
+/* transactAsset()
+ * Excute a transaction against an asset. The transaction is of type 'tType'.
+*/
+function transactAsset(tType, cFunction) {
+  var xhttp;
+  var url = "https://art-ledger.mybluemix.net/api/"+tType;
+  var input = document.forms["sellAsset"];
+  var obj;
+  var inputJSON;
+
+  obj = {
+    $class: "org.artledger.SellArtWork",
+    newValue: Number(input["sellAmount"].value),
+    artWork: "resource:org.artledger.ArtWork#"+input["artId"].value,
+    newOwner: "resource:org.artledger.Owner#"+input["newOwner"].value,
+    transactionId: ""};
+
+  inputJSON = JSON.stringify(obj);
+  console.log(inputJSON);
+
+  xhttp=new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      cFunction(this, "sellAssetInfo");
+    }
+  }
+  xhttp.open("POST", url, true);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.send(inputJSON);
+}
+
 /* callback()
  * Callback function called when http request (POST or GET) completes.
  * 'xhttp' is return from request and 'elementId' is where to write

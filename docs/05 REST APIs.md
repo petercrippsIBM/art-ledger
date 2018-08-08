@@ -85,7 +85,8 @@ Run a transaction using the `POST/SellArtWork` method with the following example
   "$class": "org.artledger.SellArtWork",
   "newValue": 1500,
   "artWork": "resource:org.artledger.ArtWork#ART01",
-  "newOwner": "resource:org.artledger.Owner#OWNER02"
+  "newOwner": "resource:org.artledger.Owner#OWNER02",
+  "transactionId": ""
 }
 ```
 
