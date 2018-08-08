@@ -50,4 +50,6 @@ $ ibmcloud cf start art-ledger
 If you go to the IBM Cloud dashboard and select the URL of the REST server you should see it running with the additional APIs.
 
 ## Step 7.5: Re-Generate the Angular Application
-This is a straight forward re-run of [Step 6 (Optional): Create an Angular Application](../docs/06%20Angular%20App.md).  
+This is a straight forward re-run of [Step 6 (Optional): Create an Angular Application](../docs/06%20Angular%20App.md).
+
+Now go to [Step 8 (Optional): Art-Ledger Front-End Application](../docs/08%20Art-Ledger%20Front-End%20App.md). 

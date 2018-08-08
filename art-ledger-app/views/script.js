@@ -7,17 +7,11 @@ function getParticipantsInfo(pType, cFunction) {
   xhttp=new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      cFunction(this);
+      cFunction(this, "participantsInfo");
     }
   };
   xhttp.open("GET", url, true);
   xhttp.send();
-}
-function cbGetParticipantsInfo(xhttp) {
-  var myObj = JSON.parse(xhttp.responseText);
-
-  document.getElementById("participantsInfo").innerHTML =
-    xhttp.responseText;
 }
 
 /* getParticipantInfo()
@@ -31,17 +25,11 @@ function getParticipantInfo(pType, cFunction) {
   xhttp=new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      cFunction(this);
+      cFunction(this, "participantInfo");
     }
   }
   xhttp.open("GET", url+id, true);
   xhttp.send();
-}
-function cbGetParticipantInfo(xhttp) {
-  var myObj = JSON.parse(xhttp.responseText);
-
-  document.getElementById("participantInfo").innerHTML =
-    xhttp.responseText;
 }
 
 /* createParticipantInfo()
@@ -79,12 +67,12 @@ function createParticipantInfo(pType, cFunction) {
           console.log("no such participant type");
   }
   inputJSON = JSON.stringify(obj);
-  console.log(inputJSON);
+  // console.log(inputJSON);
 
   xhttp=new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      cFunction(this);
+      cFunction(this, "newParticipantInfo");
     }
   }
 
@@ -92,12 +80,6 @@ function createParticipantInfo(pType, cFunction) {
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send(inputJSON);
 
-}
-function cbCreateParticipantInfo(xhttp) {
-  var myObj = JSON.parse(xhttp.responseText);
-
-  document.getElementById("newParticipantInfo").innerHTML =
-    xhttp.responseText;
 }
 
 /* getAssetsInfo()
@@ -109,17 +91,11 @@ function getAssetsInfo(aType, cFunction) {
   xhttp=new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      cFunction(this);
+      cFunction(this, "assetsInfo");
     }
   };
   xhttp.open("GET", url, true);
   xhttp.send();
-}
-function cbGetAssetsInfo(xhttp) {
-  var myObj = JSON.parse(xhttp.responseText);
-
-  document.getElementById("assetsInfo").innerHTML =
-    xhttp.responseText;
 }
 
 /* getAssetInfo()
@@ -133,15 +109,65 @@ function getAssetInfo(aType, cFunction) {
   xhttp=new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      cFunction(this);
+      cFunction(this, "assetInfo");
     }
   }
   xhttp.open("GET", url+id, true);
   xhttp.send();
 }
-function cbGetAssetInfo(xhttp) {
+
+/* createAssetInfo()
+ * Create the information for a new asset of type 'aType' in the ledger.
+ * Actual information will vary depending on the 'aType'.
+*/
+function createAssetInfo(aType, cFunction) {
+  var xhttp;
+  var url = "https://art-ledger.mybluemix.net/api/"+aType;
+  var input = document.forms["newAsset"];
+  var obj;
+  var inputJSON;
+  var auction;
+  var thisArtist="resource:org.artledger.Artist#"+input["artist"].value;
+  var thisOwner="resource:org.artledger.Owner#"+input["owner"].value;
+
+  auction = false;
+  if (input["underAuction"].value == "yes") {
+      auction = true;
+  }
+
+  obj = {
+    $class: "org.artledger.ArtWork",
+    artId: input["artId"].value,
+    type: input["artType"].value,
+    description: input["description"].value,
+    currentValue: Number(input["currentValue"].value),
+    underAuction: auction,
+    artist: thisArtist,
+    owner: thisOwner};
+
+  inputJSON = JSON.stringify(obj);
+  // console.log(inputJSON);
+
+  xhttp=new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      cFunction(this, "newAssetInfo");
+    }
+  }
+
+  xhttp.open("POST", url, true);
+  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.send(inputJSON);
+}
+
+/* callback()
+ * Callback function called when http request (POST or GET) completes.
+ * 'xhttp' is return from request and 'elementId' is where to write
+ * response text.
+*/
+function callback(xhttp, elementId) {
   var myObj = JSON.parse(xhttp.responseText);
 
-  document.getElementById("assetInfo").innerHTML =
+  document.getElementById(elementId).innerHTML =
     xhttp.responseText;
 }

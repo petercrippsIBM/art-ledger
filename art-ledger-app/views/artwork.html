@@ -1,14 +1,37 @@
 <br>Get all art work details</br>
 <button type="button"
-  onclick="getAssetsInfo('ArtWork', cbGetAssetsInfo)">Get Art Work
+  onclick="getAssetsInfo('ArtWork', callback)">Get Art Work
 </button>
 <div id="assetsInfo"></div>
 
 <br>Enter an art work ID, then click "Get Art Work" to get an individual art work details</br>
 <form id="getAsset">
   Art Work ID: <input type="text" name="assetId" value=""><br><br>
-  <input type="button" onclick="getAssetInfo('ArtWork', cbGetAssetInfo)" value="Get Art Work">
+  <input type="button" onclick="getAssetInfo('ArtWork', callback)" value="Get Art Work">
 </form>
 <div id="assetInfo"></div>
+
+<br>Enter art work details, then click "Create Art Work" to create art work details</br>
+<form id="newAsset">
+  Art Work ID: <input type="text" name="artId" value=""><br>
+  Art Work Type: <select name="artType">
+    <option value="PAINTING">PAINTING</option>
+    <option value="SCULPTURE">SCULPTURE</option>
+    <option value="PHOTOGRAPH">PHOTOGRAPH</option>
+    <option value="INSTALLATION">INSTALLATION</option>
+    <option value="CERAMIC">CERAMIC</option>
+    <option value="FILM">FILM</option>
+    <option value="MUSIC">MUSIC</option>
+    <option value="OTHER">OTHER</option>
+  </select><br>
+  Description:<br><textarea name="description" rows="5" cols="30"></textarea><br>
+  Current Value: <input type="text" name="currentValue" value=""><br>
+  Auction: <input type="radio" name="underAuction" value="yes"><br>
+  Sale: <input type="radio" name="underAuction" value="no" checked><br>
+  Artist: <input type="text" name="artist" value=""><br>
+  Owner: <input type="text" name="owner" value=""><br><br>
+</form>
+<button onclick="createAssetInfo('ArtWork', callback)">Create Art Work</button>
+<div id="newAssetInfo"></div>
 
 <script src="script.js"></script>

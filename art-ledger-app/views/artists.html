@@ -1,13 +1,13 @@
 <br>Get all artist details</br>
 <button type="button"
-  onclick="getParticipantsInfo('Artist', cbGetParticipantsInfo)">Get Artists
+  onclick="getParticipantsInfo('Artist', callback)">Get Artists
 </button>
 <div id="participantsInfo"></div>
 
 <br>Enter an artist ID, then click "Get Artist" to get an individual artist details</br>
 <form id="getParticipant">
   Artist ID: <input type="text" name="participantId" value=""><br><br>
-  <input type="button" onclick="getParticipantInfo('Artist', cbGetParticipantInfo)" value="Get Artist">
+  <input type="button" onclick="getParticipantInfo('Artist', callback)" value="Get Artist">
 </form>
 <div id="participantInfo"></div>
 
@@ -16,7 +16,7 @@
   Artist ID: <input type="text" name="artistId" value=""><br>
   First Name: <input type="text" name="firstName" value=""><br>
   Last Name: <input type="text" name="lastName" value=""><br><br>
-  <input type="button" onclick="createParticipantInfo('Artist', cbCreateParticipantInfo)" value="Create Artist">
+  <input type="button" onclick="createParticipantInfo('Artist', callback)" value="Create Artist">
 </form>
 <div id="newParticipantInfo"></div>
 
