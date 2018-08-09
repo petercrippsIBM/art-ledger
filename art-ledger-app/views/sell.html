@@ -4,7 +4,7 @@
 <br>Enter the ID of the art work you are selling, then click "Get Art Work" to get details</br>
 <form id="getAsset">
   Art Work ID: <input type="text" name="assetId" value=""><br><br>
-  <input type="button" onclick="getAssetInfo('ArtWork', callback)" value="Get Art Work">
+  <input type="button" onclick="getAssetInfo('ArtWork', 'assetInfo', 'getAsset')" value="Get Art Work">
 </form>
 <div id="assetInfo"></div>
 
@@ -14,7 +14,7 @@
   Sell Amount: <input type="text" name="sellAmount" value=""><br>
   New Owner: <input type="text" name="newOwner" value=""><br><br>
 </form>
-<button onclick="transactAsset('SellArtWork', callback)">Sell Art Work</button>
+<button onclick="transactAsset('SellArtWork', 'sellAssetInfo', 'sellAsset')">Sell Art Work</button>
 <div id="sellAssetInfo"></div>
 
 <script src="script.js"></script>

@@ -1,4 +1,26 @@
 <link href="style.css" rel="stylesheet">
 
 <h3>Auction art work</h3>
-<p>To be defined.</p>
+<br>Enter the ID of the art work you want to auction, then click "Get Art Work" to get details</br>
+<form id="getAsset">
+  Art Work ID: <input type="text" name="assetId" value=""><br><br>
+  <input type="button" onclick="getAssetInfo('ArtWork', 'assetInfo', 'getAsset')" value="Get Art Work">
+</form>
+<div id="assetInfo"></div>
+
+<br>Enter the ID of the art work you want to auction then click "Auction Art Work" to put under auction</br>
+<form id="auctionAsset">
+  Art Work ID: <input type="text" name="artId" value=""><br><br>
+</form>
+<button onclick="transactAsset('AuctionArtWork', 'auctionAssetInfo', 'auctionAsset')">Auction Art Work</button>
+<div id="auctionAssetInfo"></div>
+
+<br>Enter the ID of the art work you want to place a bid on then click "Bid On Art Work" to place bid</br>
+<form id="bidOnAsset">
+  Art Work ID: <input type="text" name="artId" value=""><br>
+  Bid Amount: <input type="text" name="bidAmount" value=""><br><br>
+</form>
+<button onclick="transactAsset('BidOnArtWork', 'bidOnAssetInfo', 'bidOnAsset')">Bid On Art Work</button>
+<div id="bidOnAssetInfo"></div>
+
+<script src="script.js"></script>
