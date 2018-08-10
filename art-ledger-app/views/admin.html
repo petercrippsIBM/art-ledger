@@ -1,0 +1,23 @@
+<link href="style.css" rel="stylesheet">
+
+<h3>Network admin</h3>
+<br>Get the status of your blockchain nodes</br>
+<form id="getNodeStatus">
+  Network ID: <input type="text" name="networkId" value=""><br>
+  Key: <input type="text" name="key" value=""><br>
+  Secret: <input type="text" name="secret" value=""><br><br>
+  <input type="button" onclick="getNodeStatus('nodeStatus', 'getNodeStatus')" value="Get Node Status">
+</form>
+<div id="nodeStatus"></div>
+
+<br>Get the status of your blockchain channel</br>
+<form id="getChannelStatus">
+  Network ID: <input type="text" name="networkId" value=""><br>
+  Channel ID: <input type="text" name="channelId" value=""><br>
+  Key: <input type="text" name="key" value=""><br>
+  Secret: <input type="text" name="secret" value=""><br><br>
+  <input type="button" onclick="getChannelStatus('channelStatus', 'getChannelStatus')" value="Get Channel Status">
+</form>
+<div id="channelStatus"></div>
+
+<script src="script.js"></script>

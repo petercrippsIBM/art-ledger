@@ -1,5 +1,8 @@
-/* This is the API of the REST server used for making HTTP requests against. */
+/* This is the API of the REST server used for making application HTTP requests against. */
 const RESTAPI = "https://art-ledger.mybluemix.net/api/";
+
+/* This is the API of the REST server used for making network HTTP requests against. */
+const NETWORKAPI = "https://blockchain-starter.ng.bluemix.net/api/v1/networks/";
 
 /* This is the namespace used for the organisation. */
 const NAMESPACE = "org.artledger";
@@ -153,6 +156,33 @@ function transactAsset(tType, elementId, formId) {
   httpPOST(RESTAPI+tType, elementId, JSON.stringify(obj));
 }
 
+/* getNodeStatus()
+ * Get the information on nodes in the network.
+ * 'elementId' is the where the callback function writes to on return.
+ * 'formId' is the form where the input data is obtained from.
+*/
+function getNodeStatus(elementId, formId) {
+  var channelId = document.forms[formId]["networkId"].value;
+  var auth;
+
+  auth = document.forms[formId]["key"].value + ":" + document.forms[formId]["secret"].value;
+  httpSecureGET(NETWORKAPI+channelId+"/nodes/status", elementId, auth);
+}
+
+/* getChannelStatus()
+ * Get the information on a channel in the network.
+ * 'elementId' is the where the callback function writes to on return.
+ * 'formId' is the form where the input data is obtained from.
+*/
+function getChannelStatus(elementId, formId) {
+  var networkId = document.forms[formId]["networkId"].value;
+  var channelId = document.forms[formId]["channelId"].value;
+  var auth;
+
+  auth = document.forms[formId]["key"].value + ":" + document.forms[formId]["secret"].value;
+  httpSecurePOST(NETWORKAPI+networkId+"/channels/"+channelId, elementId, auth, "{}");
+}
+
 /* httpGET
  * Make an asynchrous GET request to the specified 'uri'.
  * Async response is sent to a callback function and
@@ -176,7 +206,7 @@ function httpGET(uri, elementId) {
 
 /* httpPOST
  * Make an asynchrous POST request to the specified 'uri'.
- * inputJSON is the data to send in the POST.
+ * 'inputJSON' is the data to send in the POST.
  * Async response is sent to a callback function and
  * the response text written to 'elementId'.
  */
@@ -184,6 +214,7 @@ function httpPOST(uri, elementId, inputJSON) {
    var xhttp=new XMLHttpRequest();
 
    if (DEBUGMODE) {
+     console.log("HEADER: Content-type: application/json");
      console.log("POST: ",uri, "Data: ", inputJSON);
    } else {
      xhttp.onreadystatechange = function() {
@@ -195,6 +226,65 @@ function httpPOST(uri, elementId, inputJSON) {
      xhttp.setRequestHeader("Content-type", "application/json");
      xhttp.send(inputJSON);
   }
+}
+
+/* httpSecureGET
+ * Make an asynchrous GET request to the specified 'uri'.
+ * Uses basic authentication by passing an authorization
+ * header containing a base64-encoded 'username:password' string.
+ * 'auth' is the username and password in the form 'username:password'
+ * which is encoded by this function.
+ * Async response is sent to a callback function and
+ * the response text written to 'elementId'.
+ */
+function httpSecureGET(uri, elementId, auth) {
+   var xhttp=new XMLHttpRequest();
+   var encodedAuth = "Basic "+btoa(auth);
+
+   if (DEBUGMODE) {
+     console.log("HEADER: ", "Authorization "+encodedAuth);
+     console.log("GET: ",uri);
+   } else {
+     xhttp.onreadystatechange = function() {
+       if (this.readyState == 4 && this.status == 200) {
+         callback(this, elementId);
+       }
+     };
+     xhttp.open("GET", uri, true);
+     xhttp.setRequestHeader("Authorization", encodedAuth);
+     xhttp.send();
+   }
+}
+
+/* httpSecurePOST
+ * Make an asynchrous POST request to the specified 'uri'.
+ * 'inputJSON' is the data to send in the POST.
+ * Uses basic authentication by passing an authorization
+ * header containing a base64-encoded 'username:password' string.
+ * 'auth' is the username and password in the form 'username:password'
+ * which is encoded by this function.
+ * Async response is sent to a callback function and
+ * the response text written to 'elementId'.
+ */
+function httpSecurePOST(uri, elementId, auth, inputJSON) {
+   var xhttp=new XMLHttpRequest();
+   var encodedAuth = "Basic "+btoa(auth);
+
+   if (DEBUGMODE) {
+     console.log("HEADER: Content-type: application/json");
+     console.log("HEADER: ", "Authorization "+encodedAuth);
+     console.log("POST: ",uri);
+   } else {
+     xhttp.onreadystatechange = function() {
+       if (this.readyState == 4 && this.status == 200) {
+         callback(this, elementId);
+       }
+     };
+     xhttp.open("POST", uri, true);
+     xhttp.setRequestHeader("Content-type", "application/json");
+     xhttp.setRequestHeader("Authorization", encodedAuth);
+     xhttp.send(inputJSON);
+   }
 }
 
 /* callback()
