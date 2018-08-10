@@ -1,20 +1,20 @@
 <link href="style.css" rel="stylesheet">
 
 <h3>Work with art works</h3>
-<br>Get all art work details</br>
+Get all art work details<br>
 <button type="button"
   onclick="getAssetsInfo('ArtWork', 'assetsInfo')">Get Art Works
 </button>
 <div id="assetsInfo"></div>
 
-<br>Enter an art work ID, then click "Get Art Work" to get an individual art work details</br>
+<br>Enter an art work ID, then click "Get Art Work" to get an individual art work details<br>
 <form id="getAsset">
   Art Work ID: <input type="text" name="assetId" value=""><br><br>
   <input type="button" onclick="getAssetInfo('ArtWork', 'assetInfo', 'getAsset')" value="Get Art Work">
 </form>
 <div id="assetInfo"></div>
 
-<br>Enter art work details, then click "Create Art Work" to create art work details</br>
+<br>Enter art work details, then click "Create Art Work" to create art work details<br>
 <form id="newAsset">
   Art Work ID: <input type="text" name="artId" value=""><br>
   Art Work Type: <select name="artType">
