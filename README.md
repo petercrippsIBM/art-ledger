@@ -21,6 +21,6 @@ Plus optionally:
 
 You may get some errors at various points as you step through these instructions. You can find a list of errors I have encountered (with fixes) in [Possible Errors](docs/Possible%20Errors.md).
 
-There are numerous guides and videos for getting started with Hyperledger some of which were used in writing these instructions. They are listed [here](docs/Possible%20References.md) for reference.
+There are numerous guides and videos for getting started with Hyperledger some of which were used in writing these instructions. They are listed [here](docs/References.md) for reference.
 
 Finally, this file (**README.md**) and the ones it links to are written using Markdown which you can get a cheatsheet for [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).

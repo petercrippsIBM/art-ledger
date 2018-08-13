@@ -1,5 +1,7 @@
 # References
 
+The following were all used in creating this project. Thanks to all authors for making the information available.
+
 * [Deploy a blockchain business network to the cloud using the IBM Blockchain Starter Plan](https://www.ibm.com/developerworks/cloud/library/cl-deploy-blockchain-starter-plan-network/) on IBM developerWorks by Sanjay Saxena.
 * [Hyperledger Composer Basics, Parts I, II & III](https://www.ibm.com/developerworks/cloud/library/cl-model-test-your-blockchain-network-with-hyperledger-composer-playground/index.html) on IBM developerWorks by Steven Perry.
 * [How to Create an Application on Blockchain Using Hyperledger](https://medium.freecodecamp.org/ultimate-end-to-end-tutorial-to-create-an-application-on-blockchain-using-hyperledger-3a83a80cbc71) on Medium freeCodeCamp() by Niharika Singh.
