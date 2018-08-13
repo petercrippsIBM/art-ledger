@@ -1,5 +1,7 @@
 # Building Your First Hyperledger Network on IBM Cloud
-These instructions take you through five steps (plus two optional ones) to building your very first blockchain network with [Hyperledger Fabric](https://www.hyperledger.org) on [IBM Cloud](https://console.bluemix.net) using the [IBM Blockchain Platform Starter Plan](https://www.ibm.com/blogs/blockchain/2018/06/by-developers-for-developers-the-ibm-blockchain-platform-starter-plan/). The instructions assume no, or at least very little, knowledge not only of Hyperledger but also the tools you will use along the way such as [Git](https://git-scm.com), and [NPM](https://www.npmjs.com). Where there is background information you need to know these instructions will link to that.
+These instructions take you through five steps (plus some optional ones) to building your very first blockchain network with [Hyperledger Fabric and Composer](https://www.hyperledger.org) on [IBM Cloud](https://console.bluemix.net) using the [IBM Blockchain Platform Starter Plan](https://www.ibm.com/blogs/blockchain/2018/06/by-developers-for-developers-the-ibm-blockchain-platform-starter-plan/). The instructions assume no, or at least very little, knowledge not only of Hyperledger but also the tools you will use along the way such as [Git](https://git-scm.com), and [NPM](https://www.npmjs.com). Where there is background information you need to know these instructions will link to that.
+
+These instructions have been tested with IBM Blockchain Platform Starter Plan Version 1.1. I will endeavour to update them to the most current version of the platform when new ones are released.
 
 For this exercise we'll be building a blockchain network called **Art-Ledger**, an application for artists and art lovers to buy, sell and track works of art. All of the files will be kept on GitHub and can be cloned or downloaded from https://github.com/petercrippsIBM/art-ledger
 
@@ -19,12 +21,6 @@ Plus optionally:
 
 You may get some errors at various points as you step through these instructions. You can find a list of errors I have encountered (with fixes) in [Possible Errors](docs/Possible%20Errors.md).
 
-There are numerous guides and videos for getting started with Hyperledger some of which were used in writing these instructions. They are listed here for reference:
-
-* [Deploy a blockchain business network to the cloud using the IBM Blockchain Starter Plan](https://www.ibm.com/developerworks/cloud/library/cl-deploy-blockchain-starter-plan-network/) on IBM developerWorks by Sanjay Saxena.
-* [Hyperledger Composer Basics, Parts I, II & III](https://www.ibm.com/developerworks/cloud/library/cl-model-test-your-blockchain-network-with-hyperledger-composer-playground/index.html) on IBM developerWorks by Steven Perry.
-* [How to Create an Application on Blockchain Using Hyperledger](https://medium.freecodecamp.org/ultimate-end-to-end-tutorial-to-create-an-application-on-blockchain-using-hyperledger-3a83a80cbc71) on Medium freeCodeCamp() by Niharika Singh.
-* [Developing a Blockchain Application with Starter Plan](https://developer.ibm.com/tv/blockchain-innovators/#bigc) on developerWorks TV by various people.
-* [Hyperledger Blockchain for Business](https://medium.com/swlh/hyperledger-chapter-1-foundation-7ad5bd94d452) on Medium by Moses Sam Paul, this is part 1 of 10 with the others being linked from this chapter.
+There are numerous guides and videos for getting started with Hyperledger some of which were used in writing these instructions. They are listed [here](docs/Possible%20References.md) for reference.
 
 Finally, this file (**README.md**) and the ones it links to are written using Markdown which you can get a cheatsheet for [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
