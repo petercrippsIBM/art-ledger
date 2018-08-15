@@ -43,3 +43,5 @@ From the application directory (`art-ledger-app` in my case) push the app to IBM
 $ ibmcloud cf push
 ```
 Deploying your application can take a few minutes. When deployment completes, you'll see a message that your app is running. You can run the application by going to the IBM Cloud dashboard, selecting it and clicking on`Vist App URL`.
+
+Now go to [Step 9 (Optional): Using the Composer Query Language and REST APIs](../docs/09%20Queries.md)

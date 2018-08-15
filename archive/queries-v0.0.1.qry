@@ -1,0 +1,29 @@
+/** Sample queries for art-ledger business network
+*/
+
+query selectArtWorks {
+  description: "Select all art works"
+  statement:
+      SELECT org.artledger.ArtWork
+}
+
+query selectArtWorkByArtist {
+  description: "Select all art works based on their artist"
+  statement:
+      SELECT org.artledger.ArtWork
+          WHERE (artist==_$artist)
+}
+
+query selectArtWorkByOwner {
+  description: "Select all art works based on their owner"
+  statement:
+      SELECT org.artledger.ArtWork
+          WHERE (owner==_$owner)
+}
+
+query selectArtWorkWithHighValue {
+  description: "Select art works based on value"
+  statement:
+      SELECT org.artledger.ArtWork
+          WHERE (currentValue > 1000)
+}

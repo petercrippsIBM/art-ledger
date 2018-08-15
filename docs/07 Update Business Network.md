@@ -36,7 +36,7 @@ $ composer network ping -c admin@art-ledger
 you should see the new version has been installed. Finally you can go to the Blockchain Starter Plan monitor on IBM Cloud and check the default channel. There should be a new block showing the recent activity if new chaincode being installed.
 
 ## Step 7.4: Re-install the REST Server
-You'll now need to re-install the REST server to pick up the new APIs. To do this first stop the server either by going to the IBM Cloud dashboard, finding the REST server app and selection `Stop` or login to your IBM Cloud account (see **Step 9**) and issue a stop from the command line:
+You'll now need to re-install the REST server to pick up the new APIs. To do this first stop the server either by going to the IBM Cloud dashboard, finding the REST server app and selecting `Stop` or login to your IBM Cloud account and issue a stop from the command line:
 ```
 $ ibmcloud cf stop art-ledger
 ```
@@ -52,4 +52,4 @@ If you go to the IBM Cloud dashboard and select the URL of the REST server you s
 ## Step 7.5: Re-Generate the Angular Application
 This is a straight forward re-run of [Step 6 (Optional): Create an Angular Application](../docs/06%20Angular%20App.md).
 
-Now go to [Step 8 (Optional): Art-Ledger Front-End Application](../docs/08%20Art-Ledger%20Front-End%20App.md). 
+Now go to [Step 8 (Optional): Art-Ledger Front-End Application](../docs/08%20Art-Ledger%20Front-End%20App.md).

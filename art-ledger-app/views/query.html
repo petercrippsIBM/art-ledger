@@ -1,0 +1,28 @@
+<h3>Peform queries</h3>
+Select art works<br><br>
+<button type="button"
+  onclick="queryAssets('selectArtWorks', 'assetsQuery')">Select Art Works
+</button>
+<div id="assetsQuery"></div>
+
+<br>Select art works by artist<br>
+<form id="queryAssetsByParticipant1">
+  Artist ID: <input type="text" name="participantId" value=""><br><br>
+  <input type="button" onclick="queryAssetsByParticipant('selectArtWorkByArtist', 'Artist', 'assetsQueryByParticipant1', 'queryAssetsByParticipant1')" value="Select by Artist">
+</form>
+<div id="assetsQueryByParticipant1"></div>
+
+<br>Select art works by owner<br>
+<form id="queryAssetsByParticipant2">
+  Owner ID: <input type="text" name="participantId" value=""><br><br>
+  <input type="button" onclick="queryAssetsByParticipant('selectArtWorkByOwner', 'Owner', 'assetsQueryByParticipant2', 'queryAssetsByParticipant2')" value="Select by Owner">
+</form>
+<div id="assetsQueryByParticipant2"></div>
+
+Select art works with high value (over £1000)<br><br>
+<button type="button"
+  onclick="queryAssets('selectArtWorkWithHighValue', 'highValueAssetsQuery')">Select Art Works
+</button>
+<div id="highValueAssetsQuery"></div>
+
+<script src="script.js"></script>

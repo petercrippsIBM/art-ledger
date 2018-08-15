@@ -1,6 +1,9 @@
 /* This is the API of the REST server used for making application HTTP requests against. */
 const RESTAPI = "https://art-ledger.mybluemix.net/api/";
 
+/* This is the API of the REST server used for making application HTTP requests against. */
+const RESTQUERYAPI = "https://art-ledger.mybluemix.net/api/queries/";
+
 /* This is the API of the REST server used for making network HTTP requests against. */
 const NETWORKAPI = "https://blockchain-starter.ng.bluemix.net/api/v1/networks/";
 
@@ -181,6 +184,31 @@ function getChannelStatus(elementId, formId) {
 
   auth = document.forms[formId]["key"].value + ":" + document.forms[formId]["secret"].value;
   httpSecurePOST(NETWORKAPI+networkId+"/channels/"+channelId, elementId, auth, "{}");
+}
+
+/* quertyAssets()
+* Query assets with query 'qType' in the ledger.
+* 'elementId' is the where the callback function writes to on return.
+*/
+function queryAssets(qType, elementId) {
+  httpGET(RESTQUERYAPI+qType, elementId);
+}
+
+/* queryAssetsByParticipant()
+ * Query assets with query 'qType' in the ledger.
+ * 'pType' is the participant type.
+ * 'elementId' is the where the callback function writes to on return.
+ * 'formId' is the form where the input data is obtained from.
+*/
+function queryAssetsByParticipant(qType, pType, elementId, formId) {
+  var id = document.forms[formId]["participantId"].value;
+
+  if (pType == 'Artist') {
+    id = "?artist=resource%3Aorg.artledger.Artist%23"+id;
+  } else {
+    id = "?owner=resource%3Aorg.artledger.Owner%23"+id;
+  }
+  httpGET(RESTQUERYAPI+qType+"/"+id, elementId);
 }
 
 /* httpGET

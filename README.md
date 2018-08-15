@@ -5,7 +5,7 @@ These instructions have been tested with IBM Blockchain Platform Starter Plan Ve
 
 For this exercise we'll be building a blockchain network called **Art-Ledger**, an application for artists and art lovers to buy, sell and track works of art. All of the files will be kept on GitHub and can be cloned or downloaded from https://github.com/petercrippsIBM/art-ledger
 
-Okay, let's get started. Here are the five steps (plus three optional ones) to get you up and running with your first blockchain network on the IBM Blockchain Starter Plan. Each step links to the next one at the end or you can return here to navigate your way through the instructions.
+Okay, let's get started. Here are the five steps to get you up and running with your first blockchain network on the IBM Blockchain Starter Plan. Each step links to the next one at the end or you can return here to navigate your way through the instructions.
 
 * [Step 1: Setup a Development Environment](docs/01%20Setup.md)
 * [Step 2: Create IBM Cloud Services](docs/02%20Cloud%20Services.md)
@@ -18,6 +18,7 @@ Plus optionally:
 * [Step 6 (Optional): Create an Angular Application](docs/06%20Angular%20App.md)
 * [Step 7 (Optional): Update the Business Network](docs/07%20Update%20Business%20Network.md)
 * [Step 8 (Optional): Art-Ledger Front-End Application](docs/08%20Art-Ledger%20Front-End%20App.md)
+* [Step 9 (Optional): Using the Composer Query Language and REST APIs](docs/09%20Queries.md)
 
 You may get some errors at various points as you step through these instructions. You can find a list of errors I have encountered (with fixes) in [Possible Errors](docs/Possible%20Errors.md).
 
