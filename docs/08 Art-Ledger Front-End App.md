@@ -1,5 +1,5 @@
 # Step 8 (Optional): Art-Ledger Front-End Application
-To provide a simple way of creating and viewing Art-Ledger participants and assets as well as running transactions a simple HTML5 and JavaScript front-end is also provided. This will be compatible with the most current version of the art-ledger application.
+To provide a simple way of creating and viewing Art-Ledger participants and assets as well as running transactions a simple HTML5 and JavaScript front-end is also provided. This will always be compatible with the most current version of the art-ledger application.
 
 The application uses the [Express Framework](https://expressjs.com).
 
